@@ -42,6 +42,11 @@ const registerValidation = [
 
 ];
 
+// Handle routes
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 // Registration endpoint
 app.post('/api/register', registerValidation, async (req, res) => {
   try {
