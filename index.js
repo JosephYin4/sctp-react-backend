@@ -9,7 +9,12 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+  origin: 'https://5173-josephyin4-reactshoppar-hvn1i83bktj.ws-us116.gitpod.io', // Allow the React app domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: false // If you need to send cookies or authentication headers
+}));
 app.use(express.json());
 
 console.log(process.env.DB_USER);
