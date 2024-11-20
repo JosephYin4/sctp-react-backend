@@ -11,7 +11,7 @@ const app = express();
 // Middleware
 //app.use(cors());
 app.use(cors({
-  origin: 'https://5173-josephyin4-reactshoppar-mc1wvxj2wyi.ws-us116.gitpod.io', // Allow the React app domain
+  origin: 'https://josephyin4-reactshoppar-830suwafqea.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
   credentials: false, // If you need to send cookies or authentication headers
   //allowedHeaders: ['Content-Type', 'Authorization'], // Add any custom headers you use
