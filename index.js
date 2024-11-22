@@ -1,12 +1,13 @@
 // app.js
 const express = require('express');
-const mysql = require('mysql2/promise');
+//const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const { body, validationResult } = require('express-validator');
 require('dotenv').config();
 
 const app = express();
+const pool = require('./database');
 
 // Middleware
 //app.use(cors());
@@ -22,7 +23,7 @@ console.log(process.env.DB_USER);
 console.log(process.env.DB_PASSWORD)
 
 // Database connection pool
-const pool = mysql.createPool({
+/*const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -30,7 +31,7 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
-});
+}); */
 
 // Validation middleware
 const registerValidation = [
