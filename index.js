@@ -6,11 +6,14 @@ const cors = require('cors');
 const { body, validationResult } = require('express-validator');
 require('dotenv').config();
 
+// make sure this comes AFTER dotenv config
+const productsRouter = require('./routes/products');
+
 const app = express();
-const pool = require('./database');
+const pool = require('./data/database');
 
 // Middleware
-//app.use(cors());
+app.use(cors());
 app.use(cors({
   origin: 'https://josephyin4-reactshoppar-830suwafqea.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
@@ -49,9 +52,12 @@ const registerValidation = [
 
 ];
 
+// Routes
+app.use('/api/products', productsRouter);
+
 // Handle routes
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.json({ message: 'Welcome to our e-commerce API' });
 });
 
 // Registration endpoint
