@@ -21,7 +21,8 @@ CREATE TABLE users (
 
 CREATE TABLE marketing_preferences (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  preference VARCHAR(50) NOT NULL UNIQUE
+  email_marketing BOOLEAN,
+  sms_marketing BOOLEAN
 );
 
 CREATE TABLE user_marketing_preferences (

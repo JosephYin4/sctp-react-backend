@@ -6,5 +6,5 @@ INSERT INTO products (name, price, image) VALUES
 ('Portable Power Bank', 49.99, 'https://picsum.photos/id/26/300/200'),
 ('HD Action Camera', 129.99, 'https://picsum.photos/id/96/300/200');
 
-INSERT INTO marketing_preferences (id, preference) VALUES (1, 'email');  -- Email Marketing
-INSERT INTO marketing_preferences (id, preference) VALUES (2, 'sms');    -- SMS Marketing
+INSERT INTO marketing_preferences (id, email_marketing, sms_marketing) VALUES (1, 1, 0);  -- Email Marketing
+INSERT INTO marketing_preferences (id, email_marketing, sms_marketing) VALUES (2, 0, 1);    -- SMS Marketing

@@ -1,4 +1,4 @@
-const productData = require('../data/productData');
+const productData = require('../data/productData').default;
 
 async function getAllProducts() {
   return await productData.getAllProducts();

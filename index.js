@@ -1,5 +1,6 @@
 // app.js
 const express = require('express');
+
 //const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -8,6 +9,7 @@ require('dotenv').config();
 
 // make sure this comes AFTER dotenv config
 const productsRouter = require('./routes/products');
+const userRoutes = require('./routes/users');
 
 const app = express();
 const pool = require('./data/database');
@@ -15,7 +17,7 @@ const pool = require('./data/database');
 // Middleware
 app.use(cors());
 app.use(cors({
-  origin: 'https://josephyin4-reactshoppar-830suwafqea.ws-us116.gitpod.io', // Allow the React app domain
+  origin: 'https://5173-josephyin4-reactshoppar-8q8gvkjoqsh.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
   credentials: false, // If you need to send cookies or authentication headers
   //allowedHeaders: ['Content-Type', 'Authorization'], // Add any custom headers you use
@@ -54,11 +56,13 @@ const registerValidation = [
 
 // Routes
 app.use('/api/products', productsRouter);
+app.use('/api/users', userRoutes);
 
 // Handle routes
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to our e-commerce API' });
 });
+
 
 // Registration endpoint
 app.post('/api/register', registerValidation, async (req, res) => {
@@ -104,16 +108,16 @@ app.post('/api/register', registerValidation, async (req, res) => {
 
       // Insert user
       const [userResult] = await connection.query(
-        `INSERT INTO users (name, email, password_hash, salutation, country)
+        `INSERT INTO users (name, email, password, salutation, country)
          VALUES (?, ?, ?, ?, ?)`,
         [name, email, passwordHash, salutation, country]
       );
 
       // Insert marketing preferences
       await connection.query(
-        `INSERT INTO marketing_preferences (user_id, email_marketing, sms_marketing)
-         VALUES (?, ?, ?)`,
-        [userResult.insertId, emailMarketing, smsMarketing]
+        `INSERT INTO marketing_preferences (email_marketing, sms_marketing)
+         VALUES (?, ?)`,
+        [emailMarketing, smsMarketing]
       );
 
       // Commit transaction
