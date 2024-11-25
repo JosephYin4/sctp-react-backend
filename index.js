@@ -10,6 +10,8 @@ require('dotenv').config();
 // make sure this comes AFTER dotenv config
 const productsRouter = require('./routes/products');
 const userRoutes = require('./routes/users');
+const cartRoutes = require('./routes/cart');
+
 
 const app = express();
 const pool = require('./data/database');
@@ -17,7 +19,7 @@ const pool = require('./data/database');
 // Middleware
 app.use(cors());
 app.use(cors({
-  origin: 'https://5173-josephyin4-reactshoppar-8q8gvkjoqsh.ws-us116.gitpod.io', // Allow the React app domain
+  origin: 'https://5173-josephyin4-reactshoppar-eli1f6thfrz.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
   credentials: false, // If you need to send cookies or authentication headers
   //allowedHeaders: ['Content-Type', 'Authorization'], // Add any custom headers you use
@@ -54,9 +56,11 @@ const registerValidation = [
 
 ];
 
-// Routes
+//routes
 app.use('/api/products', productsRouter);
 app.use('/api/users', userRoutes);
+app.use('/api/cart', cartRoutes);
+
 
 // Handle routes
 app.get('/', (req, res) => {
