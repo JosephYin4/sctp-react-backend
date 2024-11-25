@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
-const pool = require('../data/database');
+//const pool = require('../data/database');
 
 // GET all products
 router.get('/', async (req, res) => {
@@ -27,3 +27,4 @@ router.get('/:id', async (req, res) => {
 });
 
 module.exports = router;
+

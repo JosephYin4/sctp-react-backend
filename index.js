@@ -1,16 +1,17 @@
 // app.js
+require('dotenv').config();
+
 const express = require('express');
 
-//const mysql = require('mysql2/promise');
+const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const { body, validationResult } = require('express-validator');
-require('dotenv').config();
 
 // make sure this comes AFTER dotenv config
-const productsRouter = require('./routes/products');
 const userRoutes = require('./routes/users');
 const cartRoutes = require('./routes/cart');
+const productsRouter = require('./routes/products');
 
 
 const app = express();
@@ -18,12 +19,12 @@ const pool = require('./data/database');
 
 // Middleware
 app.use(cors());
-app.use(cors({
+/* app.use(cors({
   origin: 'https://5173-josephyin4-reactshoppar-eli1f6thfrz.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  credentials: false, // If you need to send cookies or authentication headers
+  credentials: true, // If you need to send cookies or authentication headers
   //allowedHeaders: ['Content-Type', 'Authorization'], // Add any custom headers you use
-}));
+})); */
 app.use(express.json());
 
 console.log(process.env.DB_USER);
