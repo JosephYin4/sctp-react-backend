@@ -20,7 +20,7 @@ const pool = require('./data/database');
 // Middleware
 app.use(cors());
 /* app.use(cors({
-  origin: 'https://5173-josephyin4-reactshoppar-eli1f6thfrz.ws-us116.gitpod.io', // Allow the React app domain
+  origin: 'https://5173-josephyin4-reactshoppar-lt49spcbj1l.ws-us116.gitpod.io', // Allow the React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
   credentials: true, // If you need to send cookies or authentication headers
   //allowedHeaders: ['Content-Type', 'Authorization'], // Add any custom headers you use
