@@ -14,3 +14,4 @@ jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
 }
 
 module.exports = authenticateToken;
+
